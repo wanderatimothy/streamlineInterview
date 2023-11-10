@@ -3,17 +3,17 @@
 
 function anagram( $str1,$str2) : bool
 {
-  
+    error_reporting(E_ERROR | E_PARSE);
+      
     $merge =  $str1 . $str2;
-
 
     $singleSentence =  str_replace(' ','',strtolower($merge)); 
 
     $characters = array_unique(str_split($singleSentence));
 
-    $matchCounter = [];
+    $matchCounter = array();
 
-    foreach(str_split($singleSentence)  as $c){
+    foreach(str_split($singleSentence) as $c){
 
         if(in_array($c , $characters)){
 
@@ -27,7 +27,7 @@ function anagram( $str1,$str2) : bool
 
     foreach(array_keys($matchCounter) as $k){
 
-        if(($matchCounter["$k"] % 2) === 1){
+        if(($matchCounter[$k] % 2) === 1){
 
             return false;
         } 
